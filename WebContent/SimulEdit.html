@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+var els = document.getElementsByTagName('td'), el, i, log = document.getElementById('log');
+
+function onEvent(e) {
+    log.innerText += e.type + ', ' + e.srcElement.innerHTML + '\n';
+}
+
+for(i = 0; i < els.length; i++) {
+    el = els[i];
+    el.addEventListener('change', onEvent);
+    el.addEventListener('input', onEvent);
+    el.addEventListener('click', onEvent);
+    el.addEventListener('blur', onEvent);
+    el.addEventListener('keyup', onEvent);
+    el.addEventListener('paste', onEvent);
+}
+</script>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Col1</th>
+            <th>Col2</th>
+        </tr>
+    </thead>
+    <tr>
+        <td contenteditable="true">edit me</td>
+        <td contenteditable="true">me too</td>
+    </tr>
+</table>
+
+<div id="log">
+</div>
+</body>
+</html>
